@@ -87,12 +87,20 @@ WSGI_APPLICATION = 'rabbit_farmers.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rabbits_demo',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'rabit_db',
+        'USER': 'applications',
+        'PASSWORD': 'K0Junga_',
+        'HOST': '52.221.98.214',
         'PORT': '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'rabbits_demo',
+    #     'USER': 'root',
+    #     'PASSWORD': 'password',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 

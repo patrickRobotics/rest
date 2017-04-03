@@ -2,8 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets, authentication, filters
 from rest_framework.permissions import IsAuthenticated
 from .models import Farmers, Locations
-from .serializers import FarmersSerializer, UserSerializer, LocationsSerializer
-
+from .serializers import FarmersSerializer, LocationsSerializer
 User = get_user_model()
 
 
@@ -25,12 +24,12 @@ class DefaultMixin(object):
     )
 
 
-class UserViewSet(DefaultMixin, viewsets.ReadOnlyModelViewSet):
-    """API endpoint for listing users."""
-    lookup_field = User.USERNAME_FIELD
-    lookup_url_kwarg = User.USERNAME_FIELD
-    queryset = User.objects.order_by(User.USERNAME_FIELD)
-    serializer_class = UserSerializer
+# class UserViewSet(DefaultMixin, viewsets.ReadOnlyModelViewSet):
+#     """API endpoint for listing users."""
+#     lookup_field = User.USERNAME_FIELD
+#     lookup_url_kwarg = User.USERNAME_FIELD
+#     queryset = User.objects.order_by(User.USERNAME_FIELD)
+#     serializer_class = UserSerializer
 
 
 class FarmersViewSet(DefaultMixin, viewsets.ModelViewSet):
