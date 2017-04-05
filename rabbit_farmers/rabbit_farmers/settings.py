@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'rabit_db',
         'USER': 'applications',
         'PASSWORD': 'K0Junga_',
-        'HOST': '52.221.98.214',
+        'HOST': '52.74.138.204',
         'PORT': '3306',
     }
     # 'default': {

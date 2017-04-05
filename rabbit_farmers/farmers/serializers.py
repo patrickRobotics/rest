@@ -40,7 +40,7 @@ User = get_user_model()
 class LocationsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Locations
-        fields = ('id', 'location_name', 'location_lat', 'location_long',
+        fields = ('url', 'location_name', 'location_lat', 'location_long',
                   'location_description', 'nearest_town')
 
 

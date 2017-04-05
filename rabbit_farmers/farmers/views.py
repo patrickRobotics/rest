@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, authentication, filters
 from rest_framework.permissions import IsAuthenticated
+# from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Farmers, Locations
 from .serializers import FarmersSerializer, LocationsSerializer
 User = get_user_model()
@@ -11,9 +12,9 @@ class DefaultMixin(object):
         filtering and pagination."""
     authentication_classes = (
         authentication.BasicAuthentication,
-        authentication.TokenAuthentication,
     )
     permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
     paginate_by = 25
     paginate_by_param = 'page_size'
     max_paginate_by = 100
