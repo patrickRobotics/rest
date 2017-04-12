@@ -6,13 +6,13 @@ from .models import Farmers, Locations
 User = get_user_model()
 
 
-# class UserSerializer(serializers.HyperlinkedModelSerializer):
-#     full_name = serializers.CharField(source='get_full_name', read_only=True)
-#
-#     class Meta:
-#         model = User
-#         fields = ('id', User.USERNAME_FIELD, 'full_name', 'is_active',
-#                   'groups')
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    full_name = serializers.CharField(source='get_full_name', read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('id', User.USERNAME_FIELD, 'full_name', 'is_active',
+                  'groups')
 
 
 # class LocationsSerializer(serializers.ModelSerializer):
@@ -38,6 +38,7 @@ User = get_user_model()
 #         }
 
 class LocationsSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Locations
         fields = ('url', 'location_name', 'location_lat', 'location_long',

@@ -1,9 +1,10 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, authentication, filters
 from rest_framework.permissions import IsAuthenticated
-# from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.authentication import SessionAuthentication, \
+    BasicAuthentication
 from .models import Farmers, Locations
-from .serializers import FarmersSerializer, LocationsSerializer
+from .serializers import FarmersSerializer, LocationsSerializer, UserSerializer
 User = get_user_model()
 
 
@@ -13,8 +14,10 @@ class DefaultMixin(object):
     authentication_classes = (
         authentication.BasicAuthentication,
     )
+    authentication_classes = (
+        SessionAuthentication, BasicAuthentication
+    )
     permission_classes = (IsAuthenticated,)
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
     paginate_by = 25
     paginate_by_param = 'page_size'
     max_paginate_by = 100
@@ -25,12 +28,12 @@ class DefaultMixin(object):
     )
 
 
-# class UserViewSet(DefaultMixin, viewsets.ReadOnlyModelViewSet):
-#     """API endpoint for listing users."""
-#     lookup_field = User.USERNAME_FIELD
-#     lookup_url_kwarg = User.USERNAME_FIELD
-#     queryset = User.objects.order_by(User.USERNAME_FIELD)
-#     serializer_class = UserSerializer
+class UserViewSet(DefaultMixin, viewsets.ModelViewSet):
+    """API endpoint for listing users."""
+    lookup_field = User.USERNAME_FIELD
+    lookup_url_kwarg = User.USERNAME_FIELD
+    queryset = User.objects.order_by(User.USERNAME_FIELD)
+    serializer_class = UserSerializer
 
 
 class FarmersViewSet(DefaultMixin, viewsets.ModelViewSet):

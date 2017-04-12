@@ -45,6 +45,10 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
@@ -91,7 +95,7 @@ DATABASES = {
         'NAME': 'rabit_db',
         'USER': 'applications',
         'PASSWORD': 'K0Junga_',
-        'HOST': '52.74.138.204',
+        'HOST': 'ec2-54-255-222-252.ap-southeast-1.compute.amazonaws.com',
         'PORT': '3306',
     }
     # 'default': {
